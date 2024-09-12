@@ -2,7 +2,7 @@
 Sistema de Gestão - Confecção
 
 # Criando Projeto com AdonisJS
-- Ao criar o Projeto com ''' npm init adonisjs@latest (nome_do_projeto) ''' temos as seguintes opções:
+- Ao criar o Projeto com ```npm init adonisjs@latest (nome_do_projeto)``` temos as seguintes opções:
 
 ![Opções de Projetos - Selecionado "WEB STARTER KIT"](midias/start_kit_adonis.png)
 
@@ -19,9 +19,9 @@ Fiquei cuirioso com o Inertia Starter Kit por ser relacionado com Framework de F
 ![Opções de DataBases - Selecionado "PostegreSQL"](midias/database_adonis.png)
 
 - Para iniciar o Adonis 
-'''
+```
 npm run dev
-'''
+```
 
 
 
