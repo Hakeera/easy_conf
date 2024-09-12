@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+.main_grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 4 colunas iguais */
+    grid-template-rows: repeat(6, 1fr);    /* 4 linhas iguais */
+    gap: 20px;                             /* Espaçamento entre os itens da grid */
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1f2424;
+    color: #c3b89b;
+    font-size: 2em;
+    grid-column: 1 / 2; /* Logo ocupa a primeira coluna */
+    grid-row: 1 / 2;    /* Logo ocupa a primeira linha */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ith {
+    font-style: normal;
+    background-color: #697548;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.ith a {
+    display: block; /* Faz o link ocupar toda a área da div */
+    width: 100%; /* O link ocupará 100% da largura da div */
+    height: 100%; /* O link ocupará 100% da altura da div */
+    color: inherit; /* O link herda a cor da div */
+    text-decoration: none; /* Remove o sublinhado */
+    display: flex; /* Flexbox para centralizar o texto dentro do link */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
+.ith:hover {
+    background-color: #55633b; /* Mudança de cor no hover da div */
+}
+
+.ith a:hover {
+    color: #e0e0e0; /* Mudança de cor no hover do link */
+}
+.ithsel {
+    font-style: normal;
+    background-color: #202511; /* Cor ainda mais escura para o item selecionado */
+    color: white; /* Cor contrastante mais clara para o texto */
+    font-size: 1.6em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #f0e68c; /* Borda contrastante */
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais intensa */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transform: scale(1.05); /* Aumento maior para dar mais destaque */
+}
+
+/* Remove sublinhado e ajusta o estilo do link */
+.ithsel a {
+    color: inherit; /* Herdar a cor da div */
+    text-decoration: none; /* Remove sublinhado */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Efeito de hover */
+.ithsel:hover {
+    background-color: #1a200d; /* Cor ainda mais escura no hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra ainda mais forte no hover */
+}
+
+.ith:nth-child(2) {
+    grid-column: 2; /* Controle Pedidos */
+    grid-row: 1;
+}
+
+.ith:nth-child(3) {
+    grid-column: 3; /* Controle Estoque */
+    grid-row: 1;
+}
+
+.ith:nth-child(4) {
+    grid-column: 4; /* Controle Financeiro */
+    grid-row: 1;
+}
+
+.itsel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    grid-column: 1;
+    grid-row: 2 / span 5; /* Ocupa da linha 2 até 4 */
+}
+
+.select {
+    background-color: #f9f9f9;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.select:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.select h1 {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.it {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.it:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.it h1 {
+    font-size: 1.2em;
+    color: #555;
+}
+.it_vis {
+    display: grid;
+    grid-column: 2 / span 2;
+    grid-row: 2 / span 3;
+}
