@@ -33,6 +33,20 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1f2424;
+    color: #c3b89b;
+    font-size: 5em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    grid-column: 3 / span 3;
+    grid-row: 1 / 2;
+
+}
 .ith {
     font-style: normal;
     background-color: #697548;
@@ -147,6 +161,17 @@ body {
     color: #333;
 }
 
+.select a {
+    display: block; /* Faz o link ocupar toda a área da div */
+    width: 100%; /* O link ocupará 100% da largura da div */
+    height: 100%; /* O link ocupará 100% da altura da div */
+    color: inherit; /* O link herda a cor da div */
+    text-decoration: none; /* Remove o sublinhado */
+    display: flex; /* Flexbox para centralizar o texto dentro do link */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+
 .it {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -172,3 +197,49 @@ body {
     grid-column: 2 / span 2;
     grid-row: 2 / span 3;
 }
+
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    grid-column: 2 / span 2;
+    grid-row: 2 / span 3;
+}
+
+.form-container label {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.form-container button {
+    padding: 10px 20px;
+    background-color: #697548;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: #55633b;
+}
+
