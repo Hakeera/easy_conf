@@ -210,7 +210,7 @@ body {
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     grid-column: 2 / span 2;
-    grid-row: 2 / span 3;
+    grid-row: 2 / span 5;
 }
 
 .form-container label {
@@ -242,4 +242,79 @@ body {
 .form-container button:hover {
     background-color: #55633b;
 }
+
+.client-list {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    grid-column: 4 / span 2;
+    grid-row: 2 / span 5;
+}
+
+.table-wrapper {
+    width: 100%;
+}
+
+.table-body-wrapper {
+    max-height: 350px; /* Define a altura da área rolável */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.client-list table tbody tr {
+    cursor: pointer;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #697548;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilos para o contêiner de busca */
+.search-container {
+    display: flex;
+    justify-content: left; /* Centraliza horizontalmente */
+    margin-bottom: 20px; /* Espaço abaixo do campo de busca */
+}
+
+/* Estilos para o campo de busca */
+.search-container input {
+    width: 300px; /* Largura do campo */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    border: 1px solid #ccc; /* Bordas cinzas */
+    font-size: 16px; /* Tamanho da fonte */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    outline: none; /* Remove o outline padrão */
+}
+
+.search-container input:focus {
+    border-color: #007bff; /* Cor da borda ao focar */
+    box-shadow: 2px 2px 8px rgba(0, 123, 255, 0.2); /* Sombra ao focar */
+}
+
 

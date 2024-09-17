@@ -13,7 +13,7 @@
         </div>
 
         <div class="ith"><a href="home.html">Home</a></div>
-        <div class="page">Controle Clientes</div>
+        <div class="page">Controle de Clientes</div>
 
         <div class="itsel">
             <div class="select">
@@ -36,7 +36,9 @@
             </div>
         </div>
 
+        <!-- Cadastro de Clientes -->
         <div class="form-container it_vis">
+            <h2>Cadastro de Clientes</h2>
             <form action="#" method="post">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome">
@@ -50,6 +52,38 @@
                 <button type="submit">Cadastrar</button>
             </form>
         </div>
+
+        <!-- Lista de Clientes -->
+        <div class="client-list">
+            <h2>Lista de Clientes</h2>
+
+            <!-- Campo de Busca-->
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Buscar cliente..." onkeyup="searchClient()">
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <div class="table-body-wrapper">
+                    <table>
+                        <tbody id="client-table-body">
+                            <!-- Dados serão inseridos dinamicamente aqui -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+            
     </div>
 </body>
+<script src="script.js"></script>
 </html>
