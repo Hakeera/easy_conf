@@ -25,6 +25,7 @@ const estadoField = document.getElementById('estado'); // Campo de formulário p
 
 // Função para preencher a tabela com os dados dos clientes
 function renderTable(data) {
+    const attBtn = document.getElementById('atualizar_btn');
     tbody.innerHTML = ''; // Limpa o corpo da tabela
     data.forEach((client, index) => {
         const row = document.createElement('tr');
@@ -39,7 +40,7 @@ function renderTable(data) {
             cidadeField.value = client.cidade;
             estadoField.value = client.estado;
 
-            console.log(`Cliente clicado: ${client.nome}`); // Imprime no console o nome do cliente
+            attBtn.textContent = 'Atualizar';
         });
         tbody.appendChild(row);
     });
@@ -54,6 +55,8 @@ function filterClients() {
         client.estado.toLowerCase().includes(query)
     );
     renderTable(filteredClients);
+    
+
 }
 
 // Inicializa a tabela com todos os clientes
@@ -61,3 +64,26 @@ renderTable(clients);
 
 // Adiciona um ouvinte de evento ao campo de pesquisa
 searchInput.addEventListener('input', filterClients);
+
+
+window.onload = function() {
+    clicar(); // Executa a função clicar quando a página terminar de carregar
+};
+
+function clicar() {
+    const attBtn = document.getElementById('atualizar_btn');
+    const novoClienteBtn = document.getElementById('novo_cliente_btn');
+    const formulario = document.querySelector('form');
+
+    // Adiciona o event listener ao botão
+    novoClienteBtn.addEventListener('click', function() {
+        // Altera o texto do botão
+        attBtn.textContent = 'Cadastrar';  // Muda o texto para 'Atualizando...'
+        formulario.querySelectorAll('input[type="text"]').forEach(input => {
+            input.value = '';
+        });
+    });
+}
+
+// Chama a função imediatamente após sua definição
+clicar();

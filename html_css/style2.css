@@ -198,7 +198,6 @@ body {
     grid-row: 2 / span 3;
 }
 
-
 .form-container {
     display: flex;
     flex-direction: column;
@@ -211,6 +210,12 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     grid-column: 2 / span 2;
     grid-row: 2 / span 5;
+}
+
+.button-group {
+    display: flex;
+    gap: 20px; /* Espaço entre os botões */
+    margin-bottom: 20px; /* Espaço entre os botões e o formulário */
 }
 
 .form-container label {
