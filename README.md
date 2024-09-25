@@ -1,6 +1,30 @@
 # easy_conf
 Sistema de Gestão - Confecção
 
+
+# Banco de Dados de Clientes:
+
+| Campo              | Obrigatoriedade |
+|--------------------|-----------------|
+| Cliente ID         | Obrigatório      |
+| Nome               | Obrigatório      |
+| Telefone           | -               |
+| Celular            | -               |
+| Número do Documento| -               |
+| CPF/CNPJ           | -               |
+| Email              | -               |
+| Situação           | Obrigatório      |
+| Incricao Estadual  | -               |
+| CEST               | -               |
+| Endereço           | -               |
+| Cidade             | -               |
+| Estado             | -               |
+| CEP                | -               |
+| Apelido            | Obrigatório      |
+
+
+
+
 # Criando Projeto com NextJS
 
 
