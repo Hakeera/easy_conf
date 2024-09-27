@@ -1,3 +1,5 @@
+<?php include "../backend/database/Database.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +59,7 @@
 
                 <label for="telefone">Telefone:</label>
                 <input type="text" id="telefone" name="telefone" />
-                
+
                 <label for="celular">Celular</label>
                 <input type="text" name="celular" id="celular" />
 
@@ -106,11 +108,11 @@
                 </div>
 
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required />
+                <input type="text" id="nome-cliente" name="nome" required />
 
                 <label for="telefone">Telefone:</label>
                 <input type="text" id="telefone" name="telefone" />
-                
+
                 <label for="celular">Celular</label>
                 <input type="text" name="celular" id="celular" />
 
@@ -138,10 +140,10 @@
                 <input type="text" name="endereco" id="endereco">
 
                 <label for="cidade">Cidade:</label>
-                <input type="text" id="cidade" name="cidade" />
+                <input type="text" id="cidade-cliente" name="cidade" />
 
                 <label for="estado">Estado:</label>
-                <input type="text" id="estado" name="estado" />
+                <input type="text" id="estado-cliente" name="estado" />
 
                 <label for="cep">CEP:</label>
                 <input type="text" name="cep" id=cep">
@@ -164,7 +166,7 @@
             </div>
 
             <div class="table-wrapper">
-                <table>
+                <table id="clients-table">
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -172,15 +174,27 @@
                             <th>Estado</th>
                         </tr>
                     </thead>
-                </table>
 
-                <div class="table-body-wrapper">
-                    <table>
-                        <tbody id="client-table-body">
-                            <!-- Dados serão inseridos dinamicamente aqui -->
-                        </tbody>
-                    </table>
-                </div>
+                    <tbody>
+                        <?php
+                        $database = new Database();
+
+                        $clients = $database->getClients();
+
+                        foreach ($clients as $client):
+
+                        ?>
+
+                            <tr>
+                                <td><?php echo $client["nome"]; ?></td>
+                                <td><?php echo $client["cidade"]; ?></td>
+                                <td><?php echo $client["estado"]; ?></td>
+                            </tr>
+
+
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
 
