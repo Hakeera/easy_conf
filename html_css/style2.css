@@ -217,6 +217,14 @@ body {
     max-height: 500px;
 }
 
+.form-container #atualizar_cliente {
+    display: none;
+}
+
+.form-container > select {
+    margin-bottom: 30px;
+}
+
 .button-group {
     display: flex;
     gap: 20px; /* Espaço entre os botões */

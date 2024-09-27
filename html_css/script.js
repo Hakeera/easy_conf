@@ -87,3 +87,23 @@ function clicar() {
 
 // Chama a função imediatamente após sua definição
 clicar();
+
+
+const formContainerSelect = document.getElementById('form-container-select');
+const createClientForm = document.getElementById('novo_cliente');
+const updateClientForm = document.getElementById('atualizar_cliente');
+
+formContainerSelect.onchange = (event) => {
+    selectedOption = event.target.selectedIndex
+
+    switch (selectedOption) {
+        case 0: // Cadastrar cliente
+            createClientForm.style.display = "block";
+            updateClientForm.style.display = "none";
+        break;
+        case 1: // Atualizar cliente
+            createClientForm.style.display = "none";
+            updateClientForm.style.display = "block";
+        break;
+    }
+}
