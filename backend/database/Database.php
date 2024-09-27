@@ -23,4 +23,14 @@ class Database
 
         return $queryExecutionSuccess;
     }
+
+    public function getClients()
+    {
+        $query = $this->pdo->prepare("SELECT * FROM clientes");
+        $query->execute();
+
+        $clients = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $clients;
+    }
 }
