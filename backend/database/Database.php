@@ -26,6 +26,7 @@ class Database
 
     public function getClients()
     {
+        // TODO: Get only the necessary data
         $query = $this->pdo->prepare("SELECT * FROM clientes");
         $query->execute();
 
