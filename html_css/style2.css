@@ -210,6 +210,11 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     grid-column: 2 / span 2;
     grid-row: 2 / span 5;
+    overflow: scroll;
+}
+
+.form-container form {
+    max-height: 500px;
 }
 
 .button-group {
