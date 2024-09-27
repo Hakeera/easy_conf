@@ -19,32 +19,53 @@ const clients = [
 
 const tbody = document.getElementById('client-table-body');
 const searchInput = document.getElementById('search-input');
-const nomeField = document.getElementById('nome'); // Campo de formulário para o nome
-const cidadeField = document.getElementById('cidade'); // Campo de formulário para o cidade
-const estadoField = document.getElementById('estado'); // Campo de formulário para o estado
+const nomeField = document.getElementById('nome-cliente'); // Campo de formulário para o nome
+const cidadeField = document.getElementById('cidade-cliente'); // Campo de formulário para o cidade
+const estadoField = document.getElementById('estado-cliente'); // Campo de formulário para o estado
 
 // Função para preencher a tabela com os dados dos clientes
-function renderTable(data) {
-    const attBtn = document.getElementById('atualizar_btn');
-    tbody.innerHTML = ''; // Limpa o corpo da tabela
-    data.forEach((client, index) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${client.nome}</td>
-            <td>${client.cidade}</td>
-            <td>${client.estado}</td>
-        `;
-        row.addEventListener('click', function() {
-            // Quando a linha for clicada, preencher o campo de formulário com o nome do cliente
-            nomeField.value = client.nome;
-            cidadeField.value = client.cidade;
-            estadoField.value = client.estado;
+// function renderTable(data) {
+//     const attBtn = document.getElementById('atualizar_btn');
+//     tbody.innerHTML = ''; // Limpa o corpo da tabela
+//     data.forEach((client, index) => {
+//         const row = document.createElement('tr');
+//         row.innerHTML = `
+//             <td>${client.nome}</td>
+//             <td>${client.cidade}</td>
+//             <td>${client.estado}</td>
+//         `;
+//         row.addEventListener('click', function() {
+//             // Quando a linha for clicada, preencher o campo de formulário com o nome do cliente
+//             nomeField.value = client.nome;
+//             cidadeField.value = client.cidade;
+//             estadoField.value = client.estado;
 
-            attBtn.textContent = 'Atualizar';
-        });
-        tbody.appendChild(row);
+//             attBtn.textContent = 'Atualizar';
+//         });
+//         tbody.appendChild(row);
+//     });
+// }
+
+function handleClientsTableClick() {
+    const tabela = document.getElementById('clients-table');
+
+    tabela.addEventListener('click', (event) => {
+        const linha = event.target.parentElement; // Obtém a linha da tabela clicada
+        if (linha && linha.cells) {
+        // Obtém os dados das células da linha
+        const nome = linha.cells[0].innerText;
+        const cidade = linha.cells[1].innerText;
+        const estado = linha.cells[2].innerText;
+
+        nomeField.value = nome
+        cidadeField.value = cidade
+        estadoField.value = estado
+
+        }
     });
 }
+
+handleClientsTableClick();
 
 // Função para filtrar clientes com base na pesquisa
 function filterClients() {
@@ -60,7 +81,7 @@ function filterClients() {
 }
 
 // Inicializa a tabela com todos os clientes
-renderTable(clients);
+// renderTable(clients);
 
 // Adiciona um ouvinte de evento ao campo de pesquisa
 searchInput.addEventListener('input', filterClients);
