@@ -1,0 +1,96 @@
+/* Tema escuro */
+body {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+/* Cabeçalho */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Categoria */
+.selecao_categoria {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Tabela */
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #3e3e3e;
+}
+
+/* Título das colunas */
+thead th {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Linha de produto */
+tbody tr {
+    background-color: #2c2c2c;
+}
+
+/* Botão "X" centralizado na célula */
+.delete-btn {
+    background-color: #ff5c5c;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* Estilo da linha ao passar o mouse */
+tbody tr:hover {
+    background-color: #3a3a3a;
+}
+
+/* Cores dinâmicas */
+td:nth-child(2) {
+    width: auto;
+}
+
+td {
+    width: 100px; /* Largura fixa para colunas das grades */
+}
+
+/* Checkbox maiores */
+input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+}
+
+/* Botão Adicionar Linha */
+#addLinha {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+}
+
+#addLinha:hover {
+    background-color: #218838;
+}
