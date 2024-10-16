@@ -49,13 +49,6 @@ body {
     grid-row: 1 / 2;         /* Ocupa a primeira linha */
 }
 
-/* Botão de seta */
-.toggle-button {
-    text-align: center;
-    margin-bottom: 10px;
-    grid-column: 1 / span 1;
-    grid-row: 2 ;
-}
 
 /* Estilo dos itens (ITH) */
 .ith {
@@ -91,36 +84,6 @@ body {
     color: #e0e0e0;
 }
 
-/* Estilo dos itens selecionados */
-.ithsel {
-    background-color: #202511;
-    color: white;
-    font-size: 1.6em;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #f0e68c;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.ithsel a {
-    color: inherit;
-    text-decoration: none;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.ithsel:hover {
-    background-color: #1a200d;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
 
 /* Colocação dos controles */
 .ith:nth-child(2) {
@@ -138,20 +101,6 @@ body {
     grid-row: 1;
 }
 
-/* Estilo do botão de alternar seta */
-#toggle-arrow {
-    background-color: #697548;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 20px;
-}
-/* Esconde a div por padrão */
-#itsel {
-    display: none;
-}
-
 /* Quando a classe 'visible' estiver presente, mostra a div */
 #itsel.visible {
     display: flex;
@@ -165,21 +114,7 @@ body {
     grid-column: 1;
     grid-row: 2 / span 5;
 }
-/* 
-.itsel {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    grid-column: 1;
-    grid-row: 2 / span 5;
-}
-*/
-/* Estilo do dropdown */
+
 .select {
     background-color: #f9f9f9;
     width: 100%;
@@ -213,11 +148,22 @@ body {
 }
 
 
-
-/* Quando a classe 'visible' estiver presente, mostra a div */
-#itsel.visible {
-    display: block;
+.select h1 {
+    font-size: 1.2em;
+    color: #333;
 }
+
+.select a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* Itens individuais (IT) */
 .it {
@@ -276,6 +222,7 @@ body {
     margin-bottom: 30px;
 }
 
+
 .button-group {
     display: flex;
     gap: 20px;
@@ -312,69 +259,89 @@ body {
     background-color: #55633b;
 }
 
-/* Lista de clientes */
-.client-list {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    grid-column: 4 / span 2;
+/* Estilos para a tabela */
+#faturaTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    margin: 20px 0;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    grid-column: 4 / span 4;
     grid-row: 2 / span 5;
 }
 
-/* Estilo da tabela */
-.table-wrapper {
-    width: 100%;
+/* Cabeçalho da tabela */
+#faturaTable thead tr {
+    background-color: #697548;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
 }
 
-.table-body-wrapper {
-    max-height: 350px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.client-list table tbody tr:hover {
-    background-color: #f4f4f9;
-}
-
-thead {
-    background-color: #f4f4f9;
+/* Células do cabeçalho */
+#faturaTable th, #faturaTable td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
     text-align: left;
 }
 
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    font-size: 1em;
-}
-
-tbody tr:nth-child(odd) {
-    background-color: #fff;
-}
-
-tbody tr:nth-child(even) {
+/* Estilos para as linhas do corpo da tabela */
+#faturaTable tbody tr {
     background-color: #f9f9f9;
-}
-
-.client-list button {
-    padding: 10px 20px;
-    background-color: #697548;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.client-list button:hover {
-    background-color: #55633b;
+/* Estilo para hover nas linhas */
+#faturaTable tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Cor alternada para linhas ímpares */
+#faturaTable tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+/* Valores destacados */
+#faturaTable tbody td {
+    color: #333;
+}
+
+/* Situação - cores específicas */
+#faturaTable tbody tr td:nth-child(5) {
+    font-weight: bold;
+}
+
+#faturaTable tbody tr td:nth-child(5):contains('Pendente') {
+    color: #d9534f; /* vermelho */
+}
+
+#faturaTable tbody tr td:nth-child(5):contains('Pago') {
+    color: #5cb85c; /* verde */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    #faturaTable thead {
+        display: none;
+    }
+
+    #faturaTable tbody tr {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    #faturaTable tbody tr td {
+        display: block;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    #faturaTable tbody tr td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
 }
