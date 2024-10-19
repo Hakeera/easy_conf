@@ -7,13 +7,10 @@ import (
 
 func main() {
     http.HandleFunc("/tabela", func(w http.ResponseWriter, r *http.Request) {
-        // Lógica para retornar os dados da tabela
-        fmt.Fprintln(w, "Dados da Tabela")
+        // Lógica para conectar ao banco de dados ou retornar dados
+        fmt.Fprintln(w, "Dados conectados")
     })
 
-    fmt.Println("Servidor rodando na porta 8080...")
-    err := http.ListenAndServe(":8080", nil)
-    if err != nil {
-        fmt.Println("Erro ao iniciar o servidor:", err)
-    }
+    fmt.Println("Conection rodando na porta 8080...")
+    http.ListenAndServe(":8080", nil)
 }

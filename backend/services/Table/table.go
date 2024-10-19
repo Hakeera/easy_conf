@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+    "fmt"
+
+)
 
 // Estrutura para representar uma célula da tabela (celular booleana)
 type TableBool struct {
