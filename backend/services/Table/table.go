@@ -3,28 +3,28 @@ package main
 import "fmt"
 
 // Estrutura para representar uma célula da tabela (celular booleana)
-type TabelaBool struct {
+type TableBool struct {
     rows int         // Número de linhas
     cols int         // Número de colunas
     data [][]bool    // Dados armazenados na tabela (valores booleanos)
 }
 
 // Função para criar uma nova tabela booleana
-func NovaTabelaBool(rows, cols int) *TabelaBool {
-    tabela := &TabelaBool{
+func NewTableBool(rows, cols int) *TableBool {
+    table := &TableBool{
         rows: rows,
         cols: cols,
         data: make([][]bool, rows),
     }
 
-    for i := range tabela.data {
-        tabela.data[i] = make([]bool, cols)  // Inicializa cada linha com valores booleanos padrão (false)
+    for i := range table.data {
+        table.data[i] = make([]bool, cols)  // Inicializa cada linha com valores booleanos padrão (false)
     }
-    return tabela
+    return table
 }
 
 // Método para obter os valores da tabela e realizar operações com eles
-func (t *TabelaBool) ObterValores() {
+func (t *TableBool) ObterValores() {
     for i := 0; i < t.rows; i++ {
         for j := 0; j < t.cols; j++ {
             if t.data[i][j] {
@@ -37,21 +37,21 @@ func (t *TabelaBool) ObterValores() {
 }
 
 // Método para definir o valor de uma célula específica
-func (t *TabelaBool) SetValor(row, col int, valor bool) {
+func (t *TableBool) SetValor(row, col int, valor bool) {
     if row < t.rows && col < t.cols {
         t.data[row][col] = valor
     }
 }
 
 func main() {
-    // Cria uma tabela de booleanos 3x3
-    tabela := NovaTabelaBool(3, 3)
+    // Cria uma Table de booleanos 3x3
+    table := NewTableBool(3, 3)
 
     // Define alguns valores de exemplo na tabela
-    tabela.SetValor(0, 0, true)
-    tabela.SetValor(1, 1, true)
-    tabela.SetValor(2, 2, true)
+    table.SetValor(0, 0, true)
+    table.SetValor(1, 1, true)
+    table.SetValor(2, 2, true)
 
     // Percorre a tabela e imprime os valores
-    tabela.ObterValores()
+    table.ObterValores()
 }
