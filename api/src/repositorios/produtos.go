@@ -3,6 +3,7 @@ package repositorios
 import (
 	"api/src/modelos"
 	"database/sql"
+	"fmt"
 )
 
 // Repositorio de produtos
@@ -36,4 +37,38 @@ func (repositorio Produtos) Criar(produto modelos.Produto) (uint64, error) {
 	}
 
 	return uint64(ultimoIDInserido), nil
+}
+
+//Traz todos os produtos que atendem ao filtro
+func (repositorio Produtos) Buscar(nomeProduto string) ([]modelos.Produto, error) {
+	nomeProduto = fmt.Sprintf("%%%s%%", nomeProduto) // %nomeProduto% (dupla porcentagem faz pular a primeira porcentagem)
+
+	linhas, erro := repositorio.db.Query(
+		"select id, nome, custo, quantidade from produtos where nome LIKE ?", nomeProduto,
+	)
+
+	if erro != nil {
+		return nil, erro
+	}
+
+	defer linhas.Close()
+
+	var produtos []modelos.Produto
+
+	for linhas.Next() {
+		var produto modelos.Produto
+
+		if erro = linhas.Scan(
+			&produto.ID,
+			&produto.Nome,
+			&produto.Custo,
+			&produto.Quantidade,
+		); erro != nil {
+			return nil, erro
+		}
+
+		produtos = append(produtos, produto)
+	}
+
+	return produtos, nil
 }
