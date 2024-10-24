@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// Um slice de Rota que define as rotas para os produtos
 var rotasProdutos = []Rota{
 	{
 		URI:    "/produtos",

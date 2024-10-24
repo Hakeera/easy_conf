@@ -1,12 +1,14 @@
 package repositorios
 
+// Responsavel pela lógica de acesso aos dados do banco de dados relacionados ao produtos 
+
 import (
 	"api/src/modelos"
 	"database/sql"
 	"fmt"
 )
 
-// Repositorio de produtos
+// Estrutura que representa o repositório de produtos. Contem uma referencia ao objeto de conexão com o banco de dados
 type Produtos struct {
 	db *sql.DB
 }
@@ -18,6 +20,8 @@ func NovoRepositorioDeProdutos(db *sql.DB) *Produtos {
 
 // Insere um produto no banco de dados
 func (repositorio Produtos) Criar(produto modelos.Produto) (uint64, error) {
+
+	// Prepara o SQL para inserção do produto
 	statement, erro := repositorio.db.Prepare(
 		"insert into produtos (nome, custo, quantidade) values(?, ?, ?)",
 	)
@@ -26,16 +30,19 @@ func (repositorio Produtos) Criar(produto modelos.Produto) (uint64, error) {
 	}
 	defer statement.Close()
 
+	// Executa a declaração com os dados do produto
 	resultado, erro := statement.Exec(produto.Nome, produto.Custo, produto.Quantidade)
 	if erro != nil {
 		return 0, erro
 	}
 
+	// Obtem o ID do último produto inserido
 	ultimoIDInserido, erro := resultado.LastInsertId()
 	if erro != nil {
 		return 0, erro
 	}
 
+	// Retorna o ID do produto ou um erro
 	return uint64(ultimoIDInserido), nil
 }
 
@@ -43,6 +50,7 @@ func (repositorio Produtos) Criar(produto modelos.Produto) (uint64, error) {
 func (repositorio Produtos) Buscar(nomeProduto string) ([]modelos.Produto, error) {
 	nomeProduto = fmt.Sprintf("%%%s%%", nomeProduto) // %nomeProduto% (dupla porcentagem faz pular a primeira porcentagem)
 
+	// Formata o nome do produto para usar na consulta SQL com LIKE, que busca os produtos que tiverem o parametro passado
 	linhas, erro := repositorio.db.Query(
 		"select id, nome, custo, quantidade from produtos where nome LIKE ?", nomeProduto,
 	)
@@ -72,3 +80,9 @@ func (repositorio Produtos) Buscar(nomeProduto string) ([]modelos.Produto, error
 
 	return produtos, nil
 }
+
+// O repositorio produtos possui a logica de interação com o banco de dados
+// Fornece métodos para criar novos produtos e buscar produtos, mantendo a separação de preocupações entre a lógica de negócios (controladores) e a persistencia de dados (repositórios)
+
+// O controlador CriarProduto chama o método Criar do repositório quando um novo produto é criado
+// O controlador BuscarProdutos chama o método Buscar para recuperar produtos que correspondem ao nome fornecido na consulta

@@ -1,3 +1,4 @@
+-- Cria um banco de dados caso ele não exista
 CREATE DATABASE IF NOT EXISTS easyproducts;
 USE easyproducts;
 
