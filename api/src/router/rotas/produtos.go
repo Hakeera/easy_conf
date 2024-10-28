@@ -20,19 +20,19 @@ var rotasProdutos = []Rota{
 	},
 
 	{
-		URI:    "/produtos/{produtoId}",
+		URI:    "/produtos/{produtoID}",
 		Metodo: http.MethodGet,
 		Funcao: controllers.BuscarProduto,
 	},
 
 	{
-		URI:    "/produtos/{produtoId}",
+		URI:    "/produtos/{produtoID}",
 		Metodo: http.MethodPut,
 		Funcao: controllers.AtualizarProduto,
 	},
 
 	{
-		URI:    "/produtos/{produtoId}",
+		URI:    "/produtos/{produtoID}",
 		Metodo: http.MethodDelete,
 		Funcao: controllers.DeletarProduto,
 	},

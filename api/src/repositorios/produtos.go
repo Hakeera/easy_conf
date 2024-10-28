@@ -1,6 +1,6 @@
 package repositorios
 
-// Responsavel pela lógica de acesso aos dados do banco de dados relacionados ao produtos 
+// Responsavel pela lógica de acesso aos dados do banco de dados relacionados ao produtos
 
 import (
 	"api/src/modelos"
@@ -79,6 +79,61 @@ func (repositorio Produtos) Buscar(nomeProduto string) ([]modelos.Produto, error
 	}
 
 	return produtos, nil
+}
+
+// Traz um usuario do banco de dados
+func (repositorio Produtos) BuscarPorID(ID uint64) (modelos.Produto, error) {
+	linhas, erro := repositorio.db.Query(
+		"select id, nome, custo, quantidade from produtos where id = ?",
+		ID,
+	)
+	if erro != nil {
+		return modelos.Produto{}, erro
+	}
+	defer linhas.Close()
+
+	var produto modelos.Produto
+
+	if linhas.Next() {
+		if erro = linhas.Scan(
+			&produto.ID,
+			&produto.Nome,
+			&produto.Custo,
+			&produto.Quantidade,
+		); erro != nil {
+			return modelos.Produto{}, erro
+		}
+	}
+
+	return produto, nil
+}
+
+func (repositorio Produtos) Atualizar(ID uint64, produto modelos.Produto) error {
+	statement, erro := repositorio.db.Prepare("update produtos set nome = ?, custo = ?, quantidade = ? where id = ?",)
+	if erro != nil {
+		return erro
+	}
+	defer statement.Close()
+
+	if _, erro = statement.Exec(produto.Nome, produto.Custo, produto.Quantidade, ID); erro != nil {
+		return erro
+	}
+
+	return nil
+}
+
+func (repositorio Produtos) Deletar(ID uint64) error {
+	statement, erro := repositorio.db.Prepare("delete from produtos where id = ?")
+	if erro != nil {
+		return erro
+	}
+	defer statement.Close()
+
+	if _, erro = statement.Exec(ID); erro != nil {
+		return erro
+	}
+
+	return nil
 }
 
 // O repositorio produtos possui a logica de interação com o banco de dados

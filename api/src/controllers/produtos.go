@@ -4,20 +4,23 @@ package controllers
 // Quando uma rota é acessada, o controlador correspondente é chamado
 
 import (
-	"api/src/banco" // Gerencia conexão com banco de dados
+	"api/src/banco"   // Gerencia conexão com banco de dados
 	"api/src/modelos" // Contém a definição dos modelos de dados(Produto)
-	"api/src/repositorios" 
+	"api/src/repositorios"
 	"api/src/respostas" // Formata e envia respostas para o cliente
-	"encoding/json" // Manipula dados JSON
-	"strings" 
+	"encoding/json"     // Manipula dados JSON
+	"strconv"
+	"strings"
 
 	//"fmt"
 	"io/ioutil" // Lê o corpo da requisição
 	//"log"
 	"net/http" // Trabalha com requisições HTTP
+
+	"github.com/gorilla/mux"
 )
 
-// Lê o corpo da requisição 
+// Lê o corpo da requisição
 func CriarProduto(w http.ResponseWriter, r *http.Request) {
 	corpoRequest, erro := ioutil.ReadAll(r.Body)
 	if erro != nil {
@@ -81,13 +84,91 @@ func BuscarProdutos(w http.ResponseWriter, r *http.Request) {
 }
 
 func BuscarProduto(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Buscando Produto"))
+	parametros := mux.Vars(r)
+
+	produtoID, erro := strconv.ParseUint(parametros["produtoID"], 10, 64)
+	if erro != nil {
+		respostas.Erro(w, http.StatusBadRequest, erro)
+		return
+	}
+
+	db, erro := banco.Conectar()
+	if erro != nil {
+		respostas.Erro(w, http.StatusInternalServerError, erro)
+		return
+	}
+	defer db.Close()
+
+	repositorio := repositorios.NovoRepositorioDeProdutos(db)
+	produto, erro := repositorio.BuscarPorID(produtoID)
+	if erro != nil {
+		respostas.Erro(w, http.StatusInternalServerError, erro)
+		return
+	}
+
+	respostas.JSON(w, http.StatusOK, produto)
 }
 
 func AtualizarProduto(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Atualizando Produto"))
+	parametros := mux.Vars(r)
+	produtoID, erro := strconv.ParseUint(parametros["produtoID"], 10, 64)
+	if erro != nil {
+		respostas.Erro(w, http.StatusBadRequest, erro)
+		return
+	}
+
+	corpoRequisicao, erro := ioutil.ReadAll((r.Body))
+	if erro != nil {
+		respostas.Erro(w, http.StatusUnprocessableEntity, erro)
+		return
+	}
+
+	var produto modelos.Produto
+	if erro = json.Unmarshal(corpoRequisicao, &produto); erro != nil {
+		respostas.Erro(w, http.StatusBadRequest, erro)
+		return
+	}
+
+	if erro = produto.Preparar(); erro != nil {
+		respostas.Erro(w, http.StatusBadRequest, erro)
+		return
+	}
+
+	db, erro := banco.Conectar()
+	if erro != nil {
+		respostas.Erro(w, http.StatusInternalServerError, erro)
+		return
+	}
+	defer db.Close()
+
+	repositorio := repositorios.NovoRepositorioDeProdutos(db)
+	if erro = repositorio.Atualizar(produtoID, produto); erro != nil {
+		respostas.Erro(w, http.StatusInternalServerError, erro)
+		return
+	}
+
+	respostas.JSON(w, http.StatusNoContent, nil)
 }
 
 func DeletarProduto(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Deletando Produto"))
+	parametros := mux.Vars(r)
+	produtoID, erro := strconv.ParseUint(parametros["produtoID"], 10, 64)
+	if erro != nil {
+		respostas.Erro(w, http.StatusBadRequest, erro)
+		return
+	}
+	db, erro := banco.Conectar()
+	if erro != nil {
+		respostas.Erro(w, http.StatusInternalServerError, erro)
+		return
+	}
+	defer db.Close()
+
+	repositorio := repositorios.NovoRepositorioDeProdutos(db)
+	if erro = repositorio.Deletar(produtoID); erro != nil {
+		respostas.Erro(w, http.StatusInternalServerError, erro)
+		return
+	}
+
+	respostas.JSON(w, http.StatusNoContent, nil)
 }
