@@ -313,7 +313,7 @@ body {
 }
 
 /* Lista de clientes */
-.client-list {
+.cliente-list {
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -341,7 +341,7 @@ table {
     border-collapse: collapse;
 }
 
-.client-list table tbody tr:hover {
+.cliente-list table tbody tr:hover {
     background-color: #f4f4f9;
 }
 
@@ -364,7 +364,7 @@ tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.client-list button {
+.cliente-list button {
     padding: 10px 20px;
     background-color: #697548;
     color: white;
@@ -375,6 +375,6 @@ tbody tr:nth-child(even) {
     transition: background-color 0.3s ease;
 }
 
-.client-list button:hover {
+.cliente-list button:hover {
     background-color: #55633b;
 }

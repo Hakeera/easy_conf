@@ -1,5 +1,5 @@
 // Exemplo de array de clientes vindos de uma API (dados do banco)
-const clients = [
+const clientes = [
     { nome: 'João Silva', cidade: 'São Paulo', estado: 'SP' },
     { nome: 'Ana Souza', cidade: 'Rio de Janeiro', estado: 'RJ' },
     { nome: 'Pedro Costa', cidade: 'Belo Horizonte', estado: 'MG' },
@@ -17,7 +17,7 @@ const clients = [
     { nome: 'Marcos Rocha', cidade: 'São Luís', estado: 'MA' }
 ];
 
-const tbody = document.getElementById('client-table-body');
+const tbody = document.getElementById('cliente-table-body');
 const searchInput = document.getElementById('search-input');
 const nomeField = document.getElementById('nome'); // Campo de formulário para o nome
 const cidadeField = document.getElementById('cidade'); // Campo de formulário para o cidade
@@ -47,23 +47,23 @@ function renderTable(data) {
 }
 
 // Função para filtrar clientes com base na pesquisa
-function filterClients() {
+function filterClientes() {
     const query = searchInput.value.toLowerCase();
-    const filteredClients = clients.filter(client => 
+    const filteredClientes = clientes.filter(client => 
         client.nome.toLowerCase().includes(query) ||
         client.cidade.toLowerCase().includes(query) ||
         client.estado.toLowerCase().includes(query)
     );
-    renderTable(filteredClients);
+    renderTable(filteredClientes);
     
 
 }
 
 // Inicializa a tabela com todos os clientes
-renderTable(clients);
+renderTable(clientes);
 
 // Adiciona um ouvinte de evento ao campo de pesquisa
-searchInput.addEventListener('input', filterClients);
+searchInput.addEventListener('input', filterClientes);
 
 
 window.onload = function() {
