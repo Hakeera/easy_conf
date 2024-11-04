@@ -1,5 +1,7 @@
 package modelos
 
+// Define a estrutura do modelo de dados Produto e inclui metodos para validas e formatar os dados do produto
+
 import (
 	"errors"
 	"strings"
@@ -7,12 +9,15 @@ import (
 
 //Atributos dos produtos
 type Produto struct {
-	ID uint64 `json:"id,omitempty"`
+	// Omitempty faz com que o campo não seja incluso no JSON caso seu valor seja vazio
+	ID uint64 `json:"id,omitempty"` 
 	Nome string `json:"nome,omitempty"`
 	Custo float64 `json:"custo,omitempty"`
 	Quantidade int `json:"quantidade,omitempty"`
 }
 
+
+// Verifica se os campos obrigatórios estão preenchidos
 func (produto *Produto) validar() error {
 	if produto.Nome == "" {
 		return errors.New("o nome do produto é obrigatório")
@@ -29,6 +34,7 @@ func (produto *Produto) validar() error {
 	return nil
 }
 
+// Remove espaços em branco
 func (produto *Produto) formatar() {
 	produto.Nome = strings.TrimSpace(produto.Nome)
 }
@@ -42,3 +48,5 @@ func (produto *Produto) Preparar() error {
 	produto.formatar()
 	return nil
 }
+
+// Quando um novo produto é criado na função CriarProduto() do controlador o método Preparar() é chamado garantindo que apenas os produtos válidos sejam inseridos no banco de dados

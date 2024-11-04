@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+// Um slice de Rota que define as rotas para os produtos
 var rotasProdutos = []Rota{
 	{
 		URI:    "/produtos",
@@ -19,19 +20,19 @@ var rotasProdutos = []Rota{
 	},
 
 	{
-		URI:    "/produtos/{produtoId}",
+		URI:    "/produtos/{produtoID}",
 		Metodo: http.MethodGet,
 		Funcao: controllers.BuscarProduto,
 	},
 
 	{
-		URI:    "/produtos/{produtoId}",
+		URI:    "/produtos/{produtoID}",
 		Metodo: http.MethodPut,
 		Funcao: controllers.AtualizarProduto,
 	},
 
 	{
-		URI:    "/produtos/{produtoId}",
+		URI:    "/produtos/{produtoID}",
 		Metodo: http.MethodDelete,
 		Funcao: controllers.DeletarProduto,
 	},
